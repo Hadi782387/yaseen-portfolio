@@ -10,19 +10,21 @@
 
   <!-- Header -->
   <header>
-    <nav>
-      <div class="logo">Yaseen</div>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#language-knows">language knows</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#feedback">Feedback</a></li> 
-        <li><a href="#language-knows">Home</a></li>
-<!-- ✅ New menu item -->
-      </ul>
-    </nav>
+   <nav class="toolbar">
+  <div class="logo">Yaseen</div>
+
+  <!-- Hamburger Menu Button -->
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+
+  <!-- Hidden Menu Options -->
+  <ul id="navbar">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#feedback">Feedback</a></li>
+  </ul>
+</nav>
   </header>
 
   <!-- Main Content -->
@@ -68,22 +70,13 @@
       </ul>
     </section>
 
-     <h2>Language Knows</h2>
-      <ul>
-        <li>✅ HTML, CSS, JavaScript</li>
-        <li>✅ Java </li>
-        <li>✅ Python </li>
-        <li>✅c++ </li>
-      </ul>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact">
       <h2>Contact</h2>
-      <p>Have a project idea or just want to say hi? Let’s connect!</p>
+      <p>Have a project idea or just want to say hi? Let's connect!</p>
       <ul>
         <li>📧 Email: siddiquiyaseen641@gmail.com</li>
-        <li>📱 WhatsApp: +91-9867141292</li>
+        <li>📱 WhatsApp: ‪+91-9867141292‬</li>
         <li>🌐 GitHub: <a href="https://github.com">github.com/yaseen</a></li>
         <li>📸 Instagram: <a href="https://instagram.com">@yaseen.codes</a></li>
       </ul>
@@ -93,8 +86,28 @@
     <section id="feedback">
       <h2>Feedback</h2>
       <p>I'd love to hear your thoughts about my work or website. Your feedback helps me improve and grow!</p>
-      <!-- Future: Form will be added here -->
+      <p class="feedback-cta">Click here to leave your feedback</p>
     </section>
+
+    <!-- Feedback Modal -->
+    <div class="modal-overlay" id="feedback-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Share Your Feedback</h3>
+        <form id="feedback-form">
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" placeholder="Your valuable feedback..." required></textarea>
+          </div>
+          <button type="submit" class="btn submit-btn">Submit Feedback</button>
+        </form>
+      </div>
+    </div>
 
   </main>
 
