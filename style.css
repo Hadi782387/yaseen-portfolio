@@ -40,7 +40,7 @@ nav {
   display: none;
   cursor: pointer;
   font-size: 24px;
-  color: #333; /* 👈 visible on white background */
+  color: #333;
   z-index: 1001;
 }
 
@@ -48,7 +48,7 @@ nav {
   display: flex;
   list-style: none;
   gap: 20px;
-  transition: all 0.3s ease-in-out; /* 👈 Smooth open/close */
+  transition: all 0.3s ease-in-out; 
 }
 
 #navbar li a {
