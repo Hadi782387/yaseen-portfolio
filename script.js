@@ -1,16 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function () {
   const menuToggle = document.getElementById('menu-toggle');
   const navbar = document.getElementById('navbar');
-  
-  menuToggle.addEventListener('click', function() {
+
+  // Mobile Menu Toggle with transition
+  menuToggle.addEventListener('click', function () {
     navbar.classList.toggle('active');
     menuToggle.innerHTML = navbar.classList.contains('active') ? '✕' : '☰';
+
+    // Transition effect for navbar
+    navbar.style.transition = 'all 0.3s ease';
   });
 
-  // Close mobile menu when clicking on a link
+  // Close navbar on link click (mobile)
   document.querySelectorAll('#navbar a').forEach(link => {
-    link.addEventListener('click', function() {
+    link.addEventListener('click', function () {
       if (window.innerWidth <= 768) {
         navbar.classList.remove('active');
         menuToggle.innerHTML = '☰';
@@ -18,40 +21,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Smooth scrolling for anchor links
+  // Smooth Scrolling
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 80,
-          behavior: 'smooth'
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
       }
     });
   });
 
-  // Active link highlighting based on scroll position
+  // Active Link Highlight on Scroll
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('#navbar a');
-  
-  window.addEventListener('scroll', function() {
+
+  window.addEventListener('scroll', function () {
     let current = '';
-    
+
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      
-      if (pageYOffset >= (sectionTop - 100)) {
+      if (pageYOffset >= sectionTop - 100) {
         current = section.getAttribute('id');
       }
     });
-    
+
     navLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('href') === #${current}) {
@@ -60,114 +58,100 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Animation on scroll
-  const animateOnScroll = function() {
+  // Animate Sections on Scroll
+  const animateOnScroll = function () {
     const elements = document.querySelectorAll('.animate');
-    
     elements.forEach(element => {
       const elementPosition = element.getBoundingClientRect().top;
-      const screenPosition = window.innerHeight / 1.3;
-      
+      const screenPosition = window.innerHeight / 1.2;
       if (elementPosition < screenPosition) {
         element.classList.add('animated');
       }
     });
   };
-  
   window.addEventListener('scroll', animateOnScroll);
-  animateOnScroll(); // Run once on load
+  animateOnScroll();
 
-  // Form submission handling (for future implementation)
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Add your form submission logic here
-      alert('Thank you for your message! I will get back to you soon.');
-      this.reset();
-    });
-  }
+  // Set transition delay to each section
+  document.querySelectorAll('section').forEach((section, index) => {
+    section.classList.add('animate');
+    section.style.transition = 'all 0.6s ease-out';
+    section.style.transitionDelay = ${index * 0.1}s;
+  });
 
-  // Back to top button
+  // Back to Top Button with smooth transition
   const backToTopButton = document.createElement('button');
   backToTopButton.innerHTML = '↑';
   backToTopButton.classList.add('back-to-top');
+  backToTopButton.style.transition = 'opacity 0.3s ease';
   document.body.appendChild(backToTopButton);
-  
-  window.addEventListener('scroll', function() {
+
+  window.addEventListener('scroll', function () {
     if (window.pageYOffset > 300) {
       backToTopButton.style.display = 'block';
+      backToTopButton.style.opacity = '1';
     } else {
-      backToTopButton.style.display = 'none';
+      backToTopButton.style.opacity = '0';
+      setTimeout(() => {
+        if (backToTopButton.style.opacity === '0') {
+          backToTopButton.style.display = 'none';
+        }
+      }, 300);
     }
   });
-  
-  backToTopButton.addEventListener('click', function() {
+
+  backToTopButton.addEventListener('click', function () {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   });
 
-  // Add animation classes to elements (you can add these classes in your HTML)
-  document.querySelectorAll('section').forEach((section, index) => {
-    section.classList.add('animate');
-    section.style.transitionDelay = ${index * 0.1}s;
-  });
-});
-// Feedback Modal Functionality
-document.addEventListener('DOMContentLoaded', function() {
+  // Feedback Modal Logic with Fade Effect
   const feedbackSection = document.querySelector('#feedback');
   const feedbackModal = document.getElementById('feedback-modal');
   const closeModal = document.querySelector('.close-modal');
   const feedbackForm = document.getElementById('feedback-form');
   const feedbackCta = document.querySelector('.feedback-cta');
 
-  // Open modal when feedback section is clicked
-  feedbackSection.addEventListener('click', function(e) {
+  feedbackSection.addEventListener('click', function (e) {
     if (e.target.closest('.feedback-cta') || e.target === feedbackSection) {
       feedbackModal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      feedbackModal.style.transition = 'all 0.3s ease';
+      document.body.style.overflow = 'hidden';
     }
   });
 
-  // Close modal
-  closeModal.addEventListener('click', function() {
+  closeModal.addEventListener('click', function () {
     feedbackModal.classList.remove('active');
     document.body.style.overflow = 'auto';
   });
 
-  // Close when clicking outside modal
-  feedbackModal.addEventListener('click', function(e) {
+  feedbackModal.addEventListener('click', function (e) {
     if (e.target === feedbackModal) {
       feedbackModal.classList.remove('active');
       document.body.style.overflow = 'auto';
     }
   });
 
-  // Form submission
-  feedbackForm.addEventListener('submit', function(e) {
+  feedbackForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    
-    // Get form values
+
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
-    
-    // Here you would typically send the data to a server
-    console.log('Feedback submitted:', { name, email, message });
-    
-    // Show thank you message
-    alert('Thank you for your feedback! I really appreciate it.');
-    
-    // Reset form and close modal
+
+    console.log('Feedback:', { name, email, message });
+
+    alert('Thank you for your feedback!');
+
     feedbackForm.reset();
     feedbackModal.classList.remove('active');
     document.body.style.overflow = 'auto';
   });
 
-  // Close with Escape key
-  document.addEventListener('keydown', function(e) {
+  // Close modal with Escape
+  document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && feedbackModal.classList.contains('active')) {
       feedbackModal.classList.remove('active');
       document.body.style.overflow = 'auto';
