@@ -40,15 +40,12 @@ nav {
   display: none;
   cursor: pointer;
   font-size: 24px;
-  color: #333;
-  z-index: 1001;
 }
 
 #navbar {
   display: flex;
   list-style: none;
   gap: 20px;
-  transition: all 0.3s ease-in-out; 
 }
 
 #navbar li a {
@@ -286,7 +283,7 @@ footer {
   .hero {
     padding: 60px 40px;
   }
-
+  
   section {
     padding: 60px 40px;
   }
@@ -296,11 +293,11 @@ footer {
   nav {
     padding: 15px 30px;
   }
-
+  
   .menu-toggle {
     display: block;
   }
-
+  
   #navbar {
     display: none;
     position: absolute;
@@ -312,30 +309,30 @@ footer {
     padding: 20px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   }
-
+  
   #navbar.active {
     display: flex;
   }
-
+  
   .hero {
     flex-direction: column;
     text-align: center;
     padding: 60px 30px;
   }
-
+  
   .hero .left {
     padding-right: 0;
     margin-bottom: 40px;
   }
-
+  
   .hero h1 {
     font-size: 36px;
   }
-
+  
   .hero p {
     font-size: 18px;
   }
-
+  
   #skills ul {
     columns: 1;
   }
@@ -345,28 +342,27 @@ footer {
   nav {
     padding: 15px 20px;
   }
-
+  
   .hero {
     padding: 50px 20px;
   }
-
+  
   section {
     padding: 50px 20px;
   }
-
+  
   section h2 {
     font-size: 28px;
   }
-
+  
   .hero h1 {
     font-size: 30px;
   }
-
+  
   .btn {
-    padding: 10px 25px;
-  }
+    padding: 10px 25px;
+  }
 }
-
 /* Animation Classes */
 .animate {
   opacity: 0;
@@ -401,9 +397,8 @@ footer {
 .back-to-top:hover {
   background: #0056b3;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-
 /* Feedback Modal Styles */
 .modal-overlay {
   position: fixed;
