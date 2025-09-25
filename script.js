@@ -94,3 +94,26 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(el);
   });
 });
+
+// Dark mode toggle functionality
+const darkModeToggle = document.getElementById('darkModeToggle');
+const html = document.documentElement;
+
+// Check if dark mode is enabled in localStorage
+if (localStorage.getItem('darkMode') === 'enabled') {
+    html.setAttribute('data-theme', 'dark');
+    darkModeToggle.textContent = '☀️';
+}
+
+// Toggle dark mode on button click
+darkModeToggle.addEventListener('click', () => {
+    if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('darkMode', null);
+        darkModeToggle.textContent = '🌙';
+    } else {
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('darkMode', 'enabled');
+        darkModeToggle.textContent = '☀️';
+    }
+});
